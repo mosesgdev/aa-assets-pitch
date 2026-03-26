@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Montserrat:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .post {
+    width: 1080px;
+    height: 1350px;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px;
+  }
+
+  .frame { position: absolute; inset: 60px; border: 1px solid #e5e5e5; pointer-events: none; }
+
+  .top-logo { position: absolute; top: 54px; left: 50%; transform: translateX(-50%); }
+  .top-logo img { width: 120px; height: 120px; object-fit: contain; }
+
+  .content { position: relative; z-index: 2; }
+  .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.35em; color: #d4a853; font-weight: 700; margin-bottom: 44px; }
+  .big-number { font-family: 'Instrument Serif', serif; font-size: 200px; color: #0a0f1a; line-height: 1; }
+  .gold-bar { width: 80px; height: 3px; background: #d4a853; margin: 20px auto 32px; }
+  .big-label { font-family: 'Instrument Serif', serif; font-size: 50px; color: #0a0f1a; line-height: 1.2; margin-bottom: 32px; }
+  .subtitle { font-size: 16px; color: #6b7280; line-height: 1.7; max-width: 520px; margin: 0 auto; }
+</style>
+</head>
+<body>
+  <div class="post">
+    <div class="frame"></div>
+    <div class="top-logo"><img src="logo.png" alt="A&A Assets"></div>
+    <div class="content">
+      <div class="eyebrow">Meilenstein</div>
+      <div class="big-number">8+</div>
+      <div class="gold-bar"></div>
+      <div class="big-label">Projekte abgeschlossen</div>
+      <div class="subtitle">Danke an alle Verkäufer und Partner, die uns ihr Vertrauen geschenkt haben.</div>
+    </div>
+  </div>
+</body>
+</html>

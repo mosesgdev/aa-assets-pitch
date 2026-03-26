@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A&A Assets — Digitales Sanierungspaket | immoautomation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #0a0f1a;
+    --gold: #d4a853;
+    --gold-light: #e8c97a;
+    --gray: #6b7280;
+    --light: #f7f7f6;
+    --white: #ffffff;
+    --border: #e5e5e5;
+  }
+
+  html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--navy);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  .slide {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 120px;
+    position: relative;
+    scroll-snap-align: start;
+  }
+  .slide-dark { background: var(--navy); color: var(--white); }
+  .slide-light { background: var(--white); color: var(--navy); }
+  .slide-gray { background: var(--light); color: var(--navy); }
+
+  .display { font-family: 'Instrument Serif', serif; font-weight: 400; }
+  .eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 0.35em; color: var(--gold); font-weight: 700; margin-bottom: 28px; }
+  h1 { font-size: 72px; line-height: 1.05; letter-spacing: -1.5px; }
+  h2 { font-size: 56px; line-height: 1.1; letter-spacing: -1px; }
+  .subtitle { font-size: 20px; line-height: 1.7; color: var(--gray); max-width: 680px; margin-top: 28px; }
+  .slide-dark .subtitle { color: rgba(255,255,255,0.5); }
+  .gold { color: var(--gold); }
+  .gold-line { width: 60px; height: 3px; background: var(--gold); margin: 32px 0; }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-top: 60px; }
+  .stat-number { font-size: 64px; font-weight: 400; color: var(--gold); }
+  .stat-label { font-size: 14px; color: var(--gray); margin-top: 8px; text-transform: uppercase; letter-spacing: 0.15em; }
+  .slide-dark .stat-label { color: rgba(255,255,255,0.4); }
+
+  .check-list { list-style: none; margin-top: 40px; display: flex; flex-direction: column; gap: 20px; }
+  .check-list li { font-size: 20px; display: flex; align-items: flex-start; gap: 16px; line-height: 1.5; }
+  .check-list li::before { content: ''; width: 24px; height: 24px; background: var(--gold); flex-shrink: 0; margin-top: 4px; }
+
+  .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 48px; }
+  .comparison-col { padding: 48px; }
+  .comparison-col.old { background: var(--light); border-right: 3px solid var(--gold); }
+  .comparison-col.new { background: var(--white); }
+  .comparison-col h4 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 24px; }
+  .comparison-col.old h4 { color: var(--gray); }
+  .comparison-col.new h4 { color: var(--gold); }
+  .comparison-col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .comparison-col ul li { font-size: 16px; line-height: 1.5; padding-left: 20px; position: relative; }
+  .comparison-col.old ul li::before { content: '✕'; position: absolute; left: 0; color: #d44; font-weight: 700; }
+  .comparison-col.new ul li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+
+  .package-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .package-card { padding: 40px; background: var(--white); border: 1px solid var(--border); position: relative; }
+  .package-card.featured { border: 2px solid var(--gold); background: var(--navy); color: var(--white); }
+  .package-card.featured .package-price { color: var(--gold); }
+  .package-card.featured .package-items li { color: rgba(255,255,255,0.7); }
+  .package-badge { position: absolute; top: -1px; right: 24px; background: var(--gold); color: var(--navy); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; padding: 6px 16px; }
+  .package-name { font-size: 13px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gray); margin-bottom: 12px; }
+  .package-card.featured .package-name { color: rgba(255,255,255,0.4); }
+  .package-price { font-size: 48px; font-weight: 400; margin-bottom: 24px; }
+  .package-items { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .package-items li { font-size: 15px; color: var(--gray); padding-left: 20px; position: relative; }
+  .package-items li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
+  /* ===== WEBSITE EMBED — scaled iframe ===== */
+  .website-frame {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.08);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .browser-bar {
+    height: 36px;
+    background: #f5f5f4;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    gap: 8px;
+  }
+  .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .browser-dot.red { background: #ff5f57; }
+  .browser-dot.yellow { background: #ffbd2e; }
+  .browser-dot.green { background: #28c840; }
+  .browser-url { flex: 1; margin-left: 16px; background: var(--white); border: 1px solid var(--border); padding: 4px 12px; font-size: 12px; color: var(--gray); text-align: center; }
+  .website-viewport {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+  }
+  .website-viewport iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1920px;
+    height: 1080px;
+    transform-origin: top left;
+    transform: scale(var(--iframe-scale, 0.625));
+    border: none;
+  }
+
+  .instagram-frame {
+    width: 430px;
+    height: 760px;
+    border: 1px solid var(--border);
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+  }
+  .instagram-frame iframe { width: 100%; height: 100%; border: none; }
+
+  .template-row { display: flex; gap: 32px; margin-top: 48px; overflow-x: auto; padding-bottom: 20px; }
+  .template-card { flex-shrink: 0; width: 280px; box-shadow: 0 8px 32px rgba(0,0,0,0.06); border: 1px solid var(--border); overflow: hidden; }
+  .template-card-wrapper { width: 280px; height: 350px; overflow: hidden; }
+  .template-card iframe { width: 1080px; height: 1350px; transform-origin: top left; transform: scale(0.2593); border: none; pointer-events: none; display: block; }
+  .template-label { padding: 14px 16px; font-size: 13px; font-weight: 600; border-top: 1px solid var(--border); }
+
+  .two-col { display: flex; align-items: center; gap: 80px; }
+  .two-col .col { flex: 1; }
+
+  .slide-num { position: absolute; top: 40px; right: 48px; font-size: 13px; letter-spacing: 0.1em; color: var(--gray); }
+  .slide-dark .slide-num { color: rgba(255,255,255,0.25); }
+
+  .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 48px; }
+  .contact-item { padding: 32px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); }
+  .contact-item-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.25em; color: var(--gold); margin-bottom: 12px; }
+  .contact-item-value { font-size: 20px; color: var(--white); }
+
+  .pitch-logo img { height: 80px; object-fit: contain; }
+
+  .immauto-badge { position: fixed; bottom: 24px; right: 32px; background: var(--navy); color: rgba(255,255,255,0.5); font-size: 11px; padding: 8px 16px; letter-spacing: 0.1em; z-index: 100; }
+  .immauto-badge strong { color: var(--gold); }
+
+  /* ===== MOBILE — complete rewrite ===== */
+  @media (max-width: 768px) {
+
+    /* Kill scroll snap — causes jank on mobile */
+    html { scroll-snap-type: none !important; overflow-x: hidden !important; }
+
+    /* Global word-break for long German compound words */
+    body { word-break: break-word; overflow-wrap: break-word; -webkit-hyphens: auto; hyphens: auto; overflow-x: hidden !important; }
+
+    /* ---- SLIDES ---- */
+    .slide {
+      padding: 40px 20px !important;
+      min-height: auto !important;
+      overflow: hidden !important;
+      max-width: 100vw !important;
+    }
+
+    /* ---- TYPOGRAPHY — clear hierarchy, presentation-grade ---- */
+    h1, h1.display, .slide h1 {
+      font-size: 44px !important;
+      line-height: 1.08 !important;
+      letter-spacing: -0.8px !important;
+    }
+    h2, h2.display, .slide h2 {
+      font-size: 40px !important;
+      line-height: 1.08 !important;
+      letter-spacing: -0.5px !important;
+    }
+    .display { font-size: inherit !important; }
+    .subtitle, .slide .subtitle, div.subtitle {
+      font-size: 13px !important;
+      line-height: 1.5 !important;
+      margin-top: 14px !important;
+      max-width: 100% !important;
+      opacity: 0.6;
+    }
+    .eyebrow {
+      font-size: 9px !important;
+      margin-bottom: 14px !important;
+      letter-spacing: 0.25em !important;
+    }
+    .gold-line {
+      width: 32px !important;
+      height: 2px !important;
+      margin: 14px 0 !important;
+    }
+    .slide-num {
+      top: 14px !important;
+      right: 14px !important;
+      font-size: 9px !important;
+    }
+    .pitch-logo img {
+      height: 44px !important;
+    }
+
+    /* ---- SLIDE 1: Title — tighten spacing ---- */
+    .slide[style*="align-items: center"] .pitch-logo {
+      margin-bottom: 24px !important;
+    }
+    .slide[style*="align-items: center"] .gold-line {
+      margin: 20px auto !important;
+    }
+    .slide[style*="align-items: center"] p[style*="MÄRZ"] {
+      font-size: 10px !important;
+    }
+
+    /* ---- STATS ---- */
+    .stat-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 14px !important;
+      margin-top: 20px !important;
+    }
+    .stat-number {
+      font-size: 36px !important;
+    }
+    .stat-label {
+      font-size: 10px !important;
+      margin-top: 2px !important;
+      letter-spacing: 0.1em !important;
+    }
+
+    /* ---- COMPARISON GRID ---- */
+    .comparison-grid {
+      grid-template-columns: 1fr !important;
+      margin-top: 20px !important;
+    }
+    .comparison-col {
+      padding: 18px !important;
+    }
+    .comparison-col.old {
+      border-right: none !important;
+      border-bottom: 2px solid var(--gold) !important;
+    }
+    .comparison-col h4 {
+      font-size: 10px !important;
+      margin-bottom: 12px !important;
+    }
+    .comparison-col ul { gap: 8px !important; }
+    .comparison-col ul li {
+      font-size: 12px !important;
+      line-height: 1.4 !important;
+    }
+
+    /* ---- CHECKLIST ---- */
+    .check-list {
+      margin-top: 18px !important;
+      gap: 10px !important;
+    }
+    .check-list li {
+      font-size: 13px !important;
+      gap: 8px !important;
+      line-height: 1.4 !important;
+    }
+    .check-list li::before {
+      width: 14px !important;
+      height: 14px !important;
+      margin-top: 3px !important;
+      flex-shrink: 0 !important;
+    }
+
+    /* ---- TWO-COL → STACK ---- */
+    .two-col {
+      flex-direction: column !important;
+      gap: 24px !important;
+    }
+
+    /* ---- SLIDE 4: WEBSITE EMBED — scaled phone frame ---- */
+    #deviceToggle { display: none !important; }
+    .website-frame { display: none !important; }
+    #desktopFrame { display: none !important; }
+    #mobileFrame {
+      display: flex !important;
+      justify-content: center !important;
+    }
+    /* Phone shell: 248px visible (after 6px border each side = 236px content) */
+    #mobileFrame > div {
+      width: 248px !important;
+      height: 538px !important;
+      border-width: 6px !important;
+      border-radius: 32px !important;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1) !important;
+    }
+    /* Notch */
+    #mobileFrame > div > div:first-child {
+      width: 90px !important;
+      height: 20px !important;
+      border-radius: 0 0 12px 12px !important;
+    }
+    /* Inner viewport — use transform scale to fit 390px content into 236px */
+    #mobileFrame > div > div:last-child {
+      border-radius: 26px !important;
+      overflow: hidden !important;
+    }
+    #mobileFrame > div > div:last-child iframe {
+      width: 390px !important;
+      height: 844px !important;
+      transform: scale(0.605) !important;
+      transform-origin: top left !important;
+    }
+    /* Clip the scaled overflow */
+    #mobileFrame > div > div:last-child {
+      width: 236px !important;
+      height: 510px !important;
+    }
+
+    /* ---- SLIDE 6: INSTAGRAM ---- */
+    .instagram-frame {
+      width: 280px !important;
+      height: 500px !important;
+      border-radius: 24px !important;
+      margin: 0 auto !important;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08) !important;
+    }
+    /* Override ALL inline font-size on h2 */
+    h2[style], .col h2[style], .slide h2[style] {
+      font-size: 40px !important;
+    }
+    /* Override inline font-size on stat numbers in Instagram slide */
+    .two-col .stat-number[style*="font-size: 40px"] {
+      font-size: 28px !important;
+    }
+
+    /* ---- SLIDE 7: TEMPLATES ---- */
+    .template-row {
+      gap: 10px !important;
+      margin-top: 18px !important;
+      padding-bottom: 12px !important;
+      overflow-x: auto !important;
+      max-width: 100% !important;
+      -webkit-overflow-scrolling: touch;
+    }
+    .template-card {
+      width: 120px !important;
+      min-width: 120px !important;
+    }
+    .template-card-wrapper {
+      width: 120px !important;
+      height: 150px !important;
+    }
+    .template-card iframe {
+      transform: scale(0.1111) !important;
+    }
+    .template-label {
+      padding: 6px 8px !important;
+      font-size: 9px !important;
+    }
+
+    /* ---- SLIDE 8: STRATEGY 5-COL → 2-COL ---- */
+    [style*="grid-template-columns: repeat(5"] {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 8px !important;
+      margin-top: 18px !important;
+    }
+    [style*="grid-template-columns: repeat(5"] > div {
+      padding: 14px 12px !important;
+    }
+    [style*="grid-template-columns: repeat(5"] > div > div:nth-child(1) {
+      font-size: 18px !important;
+      margin-bottom: 6px !important;
+    }
+    [style*="grid-template-columns: repeat(5"] > div > div:nth-child(2) {
+      font-size: 12px !important;
+      margin-bottom: 4px !important;
+    }
+    [style*="grid-template-columns: repeat(5"] > div > div:nth-child(3) {
+      font-size: 11px !important;
+    }
+    [style*="grid-template-columns: repeat(5"] > div > div:nth-child(4) {
+      font-size: 10px !important;
+      margin-top: 6px !important;
+    }
+
+    /* ---- SLIDE 9: WIZARD MOCKUP ---- */
+    [style*="max-width: 900px"][style*="padding: 48px"] {
+      padding: 18px !important;
+      max-width: 100% !important;
+    }
+    /* Step indicators — shrink connector lines */
+    [style*="width: 80px; height: 3px"] {
+      width: 24px !important;
+    }
+    /* Step circles */
+    [style*="width: 36px; height: 36px"][style*="border-radius: 50%"] {
+      width: 28px !important;
+      height: 28px !important;
+      font-size: 11px !important;
+    }
+    /* Step labels */
+    [style*="font-size: 11px"][style*="text-transform: uppercase"][style*="letter-spacing: 0.1em"] {
+      font-size: 8px !important;
+      letter-spacing: 0.05em !important;
+    }
+    /* Slider section spacing */
+    [style*="gap: 32px; margin-bottom: 40px"] {
+      gap: 18px !important;
+      margin-bottom: 20px !important;
+    }
+    /* Slider labels */
+    [style*="font-size: 15px; font-weight: 600"] {
+      font-size: 12px !important;
+    }
+    [style*="font-size: 15px; font-weight: 700; color: var(--gold)"] {
+      font-size: 12px !important;
+    }
+    /* Wizard buttons */
+    [style*="padding: 14px 36px"] {
+      padding: 10px 16px !important;
+      font-size: 12px !important;
+    }
+    /* Step indicator row */
+    [style*="margin-bottom: 48px"][style*="justify-content: center"] {
+      margin-bottom: 20px !important;
+    }
+
+    /* Benefits row under wizard */
+    [style*="justify-content: center; gap: 48px; margin-top: 40px"] {
+      flex-direction: column !important;
+      gap: 16px !important;
+      margin-top: 20px !important;
+      align-items: center !important;
+    }
+    [style*="font-size: 32px; margin-bottom: 8px"] {
+      font-size: 22px !important;
+      margin-bottom: 4px !important;
+    }
+
+    /* ---- SLIDE 10: PACKAGES ---- */
+    .package-grid {
+      grid-template-columns: 1fr !important;
+      gap: 10px !important;
+      margin-top: 18px !important;
+    }
+    .package-card {
+      padding: 20px !important;
+    }
+    .package-price {
+      font-size: 26px !important;
+      margin-bottom: 12px !important;
+    }
+    .package-name {
+      font-size: 10px !important;
+      margin-bottom: 8px !important;
+    }
+    .package-items { gap: 6px !important; }
+    .package-items li { font-size: 12px !important; }
+    .package-badge {
+      font-size: 8px !important;
+      padding: 4px 10px !important;
+      right: 14px !important;
+    }
+
+    /* ---- SLIDE 11: CONTACT ---- */
+    .contact-grid {
+      grid-template-columns: 1fr !important;
+      gap: 8px !important;
+      margin-top: 18px !important;
+    }
+    .contact-item {
+      padding: 14px !important;
+    }
+    .contact-item-value {
+      font-size: 14px !important;
+    }
+    .contact-item-label {
+      font-size: 9px !important;
+      margin-bottom: 4px !important;
+    }
+    /* Footer note */
+    .slide p[style*="margin-top: 60px"] {
+      margin-top: 28px !important;
+      font-size: 9px !important;
+    }
+
+    /* ---- BADGE ---- */
+    .immauto-badge {
+      bottom: 6px !important;
+      right: 6px !important;
+      font-size: 7px !important;
+      padding: 3px 6px !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="immauto-badge">Präsentation von <strong>immoautomation</strong></div>
+
+<!-- SLIDE 1: TITLE -->
+<section class="slide slide-dark" style="text-align: center; align-items: center;">
+  <div class="slide-num">01 / 11</div>
+  <div class="pitch-logo" style="margin-bottom: 48px;">
+    <img src="logo.png" alt="A&A Assets">
+  </div>
+  <div class="eyebrow">Digitales Sanierungspaket</div>
+  <h1 class="display" style="max-width: 1000px;">
+    Nicht nur die Immobilien eurer Kunden brauchen eine <span class="gold">Sanierung.</span>
+  </h1>
+  <div class="subtitle" style="text-align: center; margin-left: auto; margin-right: auto;">
+    Euer digitaler Auftritt auch. Neue Website, neue Social-Media-Präsenz,<br>
+    neue Leads — ein vollständiges Digitalpaket für A&A Assets.
+  </div>
+  <div class="gold-line" style="margin: 40px auto;"></div>
+  <p style="font-size: 14px; color: rgba(255,255,255,0.3); letter-spacing: 0.1em;">MÄRZ 2026</p>
+</section>
+
+<!-- SLIDE 2: PROBLEM -->
+<section class="slide slide-light">
+  <div class="slide-num">02 / 11</div>
+  <div class="eyebrow">Ausgangslage</div>
+  <h2 class="display">
+    Euer Unternehmen verdient<br>einen <span class="gold">stärkeren</span> Auftritt.
+  </h2>
+  <div class="subtitle">
+    A&A Assets kauft und saniert Immobilien auf höchstem Niveau. Aber eure digitale Präsenz spiegelt das noch nicht wider.
+  </div>
+
+  <div class="comparison-grid">
+    <div class="comparison-col old">
+      <h4>Aktuell</h4>
+      <ul>
+        <li>WordPress-Website mit veraltetem Design</li>
+        <li>Instagram-Profil mit veraltetem 1:1-Format und schwacher Präsenz</li>
+        <li>Keine einheitliche visuelle Identität</li>
+        <li>Begrenzte Sichtbarkeit bei Verkäufern</li>
+        <li>Keine Social-Media-Strategie</li>
+        <li>Mobile Darstellung nicht optimal</li>
+      </ul>
+    </div>
+    <div class="comparison-col new">
+      <h4>Unser Vorschlag</h4>
+      <ul>
+        <li>Moderne, schnelle Website mit Premium-Design</li>
+        <li>Professioneller Instagram-Auftritt</li>
+        <li>Einheitliches Corporate Design</li>
+        <li>Gezielte Reichweite bei Immobilienverkäufern</li>
+        <li>Content-Strategie mit Vorlagen</li>
+        <li>Mobile-first, SEO-optimiert</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3: STATS -->
+<section class="slide slide-dark">
+  <div class="slide-num">03 / 11</div>
+  <div class="eyebrow">Warum jetzt</div>
+  <h2 class="display">
+    Die Zahlen sprechen<br><span class="gold">für sich.</span>
+  </h2>
+  <div class="subtitle">
+    Der Immobilienmarkt ist digital. Eure Konkurrenz ist es bereits.
+  </div>
+
+  <div class="stat-grid">
+    <div>
+      <div class="stat-number display">87%</div>
+      <div class="stat-label">der Immobilienverkäufer<br>recherchieren online</div>
+    </div>
+    <div>
+      <div class="stat-number display">1:1</div>
+      <div class="stat-label">veraltetes Post-Format<br>statt 4:5</div>
+    </div>
+    <div>
+      <div class="stat-number display">3.2s</div>
+      <div class="stat-label">Erster Eindruck<br>einer Website</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: WEBSITE PREVIEW -->
+<section class="slide slide-gray" style="padding: 60px 80px; align-items: center;">
+  <div class="slide-num">04 / 11</div>
+  <div style="text-align: center; margin-bottom: 40px;">
+    <div class="eyebrow">Neue Website</div>
+    <h2 class="display">Euer neuer digitaler<br><span class="gold">Auftritt.</span></h2>
+    <div class="subtitle" style="margin-left: auto; margin-right: auto; text-align: center;">
+      Modern, schnell, mobil-optimiert. Eine Website, die Vertrauen schafft und Verkäufer überzeugt.
+    </div>
+  </div>
+  <!-- Device toggle -->
+  <div style="display: flex; justify-content: center; gap: 4px; margin-bottom: 24px;" id="deviceToggle">
+    <button onclick="setDevice('desktop')" id="btnDesktop" class="device-btn active" style="padding: 8px 20px; font-size: 13px; font-weight: 600; border: 1px solid var(--border); background: var(--navy); color: var(--white); cursor: pointer; text-transform: uppercase; letter-spacing: 0.1em; font-family: 'Montserrat', sans-serif; transition: all 0.2s;">Desktop</button>
+    <button onclick="setDevice('mobile')" id="btnMobile" class="device-btn" style="padding: 8px 20px; font-size: 13px; font-weight: 600; border: 1px solid var(--border); background: var(--white); color: var(--navy); cursor: pointer; text-transform: uppercase; letter-spacing: 0.1em; font-family: 'Montserrat', sans-serif; transition: all 0.2s;">Mobile</button>
+  </div>
+
+  <!-- Desktop frame -->
+  <div class="website-frame" id="desktopFrame">
+    <div class="browser-bar">
+      <div class="browser-dot red"></div>
+      <div class="browser-dot yellow"></div>
+      <div class="browser-dot green"></div>
+      <div class="browser-url">aa-assets.de</div>
+    </div>
+    <div class="website-viewport" id="websiteViewport">
+      <iframe src=".." loading="lazy" id="websiteIframe"></iframe>
+    </div>
+  </div>
+
+  <!-- Mobile frame -->
+  <div id="mobileFrame" style="display: none; justify-content: center;">
+    <div style="width: 390px; height: 844px; border: 8px solid #1a1a1a; border-radius: 44px; overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,0.12); position: relative; background: #1a1a1a; box-sizing: border-box;">
+      <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 160px; height: 30px; background: #1a1a1a; border-radius: 0 0 20px 20px; z-index: 10;"></div>
+      <div style="width: 100%; height: 100%; border-radius: 36px; overflow: hidden;">
+        <iframe src=".." style="width: 100%; height: 100%; border: none;" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: WEBSITE FEATURES -->
+<section class="slide slide-light">
+  <div class="slide-num">05 / 11</div>
+  <div class="eyebrow">Website-Features</div>
+  <h2 class="display">
+    Was die neue Website<br><span class="gold">kann.</span>
+  </h2>
+
+  <ul class="check-list">
+    <li>Cinematic Video-Hero mit sofortigem Wow-Effekt</li>
+    <li>8 vollständige Seiten: Start, Verkaufen, Projekte, Über Uns, Ratgeber, Kontakt, Impressum, Datenschutz</li>
+    <li>Kontaktformular mit WhatsApp-Integration für schnelle Anfragen</li>
+    <li>SEO-optimiert mit deutschen Meta-Tags und strukturierten Daten</li>
+    <li>Blitzschnell dank Next.js — Ladezeit unter 2 Sekunden</li>
+    <li>100% responsive — perfekt auf Smartphone, Tablet und Desktop</li>
+    <li>Projekt-Galerie mit echten Sanierungsfotos</li>
+    <li>Kundenstimmen, FAQ-Bereich und Prozess-Darstellung</li>
+  </ul>
+</section>
+
+<!-- SLIDE 6: INSTAGRAM MOCKUP -->
+<section class="slide slide-dark" style="padding: 60px 100px;">
+  <div class="slide-num">06 / 11</div>
+  <div class="two-col">
+    <div class="col">
+      <div class="eyebrow">Social Media</div>
+      <h2 class="display" style="font-size: 48px;">
+        Euer neues<br><span class="gold">Instagram.</span>
+      </h2>
+      <div class="subtitle">
+        Euer aktuelles Instagram hat Potenzial, schöpft es aber nicht aus — das Logo ist ungünstig platziert, die Posts sind noch im veralteten 1:1-Format statt dem neuen 4:5 Feed-Format, und es fehlt eine durchgängige visuelle Linie.
+      </div>
+      <div class="gold-line"></div>
+      <div class="stat-grid" style="grid-template-columns: repeat(2, 1fr); gap: 32px; margin-top: 32px;">
+        <div>
+          <div class="stat-number display" style="font-size: 40px;">4-5</div>
+          <div class="stat-label">Posts pro Woche</div>
+        </div>
+        <div>
+          <div class="stat-number display" style="font-size: 40px;">5</div>
+          <div class="stat-label">Content-Säulen</div>
+        </div>
+        <div>
+          <div class="stat-number display" style="font-size: 40px;">10</div>
+          <div class="stat-label">Fertige Templates</div>
+        </div>
+        <div>
+          <div class="stat-number display" style="font-size: 40px;">2</div>
+          <div class="stat-label">Wochen Content-Plan</div>
+        </div>
+      </div>
+    </div>
+    <div class="col" style="display: flex; justify-content: center;">
+      <div class="instagram-frame">
+        <iframe src="instagram-profile-mockup.html" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7: TEMPLATES -->
+<section class="slide slide-light" style="padding: 60px 80px;">
+  <div class="slide-num">07 / 11</div>
+  <div class="eyebrow">Content-Vorlagen</div>
+  <h2 class="display">
+    Sofort einsetzbare <span class="gold">Templates.</span>
+  </h2>
+  <div class="subtitle">
+    10 professionelle Vorlagen im neuen Corporate Design — fertig für Instagram Feed und Stories.
+  </div>
+
+  <div class="template-row">
+    <div class="template-card">
+      <div class="template-card-wrapper"><iframe src="before-after.html" scrolling="no"></iframe></div>
+      <div class="template-label">Vorher / Nachher</div>
+    </div>
+    <div class="template-card">
+      <div class="template-card-wrapper"><iframe src="project-spotlight.html" scrolling="no"></iframe></div>
+      <div class="template-label">Projekt-Spotlight</div>
+    </div>
+    <div class="template-card">
+      <div class="template-card-wrapper"><iframe src="testimonial.html" scrolling="no"></iframe></div>
+      <div class="template-label">Kundenstimme</div>
+    </div>
+    <div class="template-card">
+      <div class="template-card-wrapper"><iframe src="numbered-list.html" scrolling="no"></iframe></div>
+      <div class="template-label">Ratgeber-Liste</div>
+    </div>
+    <div class="template-card">
+      <div class="template-card-wrapper"><iframe src="cta-post.html" scrolling="no"></iframe></div>
+      <div class="template-label">Call-to-Action</div>
+    </div>
+    <div class="template-card">
+      <div class="template-card-wrapper"><iframe src="team-intro.html" scrolling="no"></iframe></div>
+      <div class="template-label">Team-Vorstellung</div>
+    </div>
+    <div class="template-card">
+      <div class="template-card-wrapper"><iframe src="milestone.html" scrolling="no"></iframe></div>
+      <div class="template-label">Meilenstein</div>
+    </div>
+    <div class="template-card">
+      <div class="template-card-wrapper"><iframe src="market-tip.html" scrolling="no"></iframe></div>
+      <div class="template-label">Markt-Wissen</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8: STRATEGY -->
+<section class="slide slide-gray">
+  <div class="slide-num">08 / 11</div>
+  <div class="eyebrow">Strategie</div>
+  <h2 class="display">
+    Content-Säulen für<br>nachhaltiges <span class="gold">Wachstum.</span>
+  </h2>
+  <div class="subtitle">
+    Eine klare Strategie mit fünf Content-Säulen sorgt für Abwechslung und Reichweite.
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; margin-top: 48px;">
+    <div style="padding: 32px 24px; background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--gold);">
+      <div style="font-size: 28px; margin-bottom: 16px;">🔄</div>
+      <div style="font-size: 15px; font-weight: 700; margin-bottom: 8px;">Vorher / Nachher</div>
+      <div style="font-size: 13px; color: var(--gray); line-height: 1.5;">Renovierungs-Transformationen — der stärkste Content-Typ.</div>
+      <div style="font-size: 12px; color: var(--gold); margin-top: 12px; font-weight: 600;">35%</div>
+    </div>
+    <div style="padding: 32px 24px; background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--gold);">
+      <div style="font-size: 28px; margin-bottom: 16px;">🏗</div>
+      <div style="font-size: 15px; font-weight: 700; margin-bottom: 8px;">Hinter den Kulissen</div>
+      <div style="font-size: 13px; color: var(--gray); line-height: 1.5;">Baustellen, Team bei der Arbeit, Materialauswahl.</div>
+      <div style="font-size: 12px; color: var(--gold); margin-top: 12px; font-weight: 600;">25%</div>
+    </div>
+    <div style="padding: 32px 24px; background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--gold);">
+      <div style="font-size: 28px; margin-bottom: 16px;">💡</div>
+      <div style="font-size: 15px; font-weight: 700; margin-bottom: 8px;">Markt-Wissen</div>
+      <div style="font-size: 13px; color: var(--gray); line-height: 1.5;">Tipps, Blog-Inhalte, Markt-Insights für NRW.</div>
+      <div style="font-size: 12px; color: var(--gold); margin-top: 12px; font-weight: 600;">20%</div>
+    </div>
+    <div style="padding: 32px 24px; background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--gold);">
+      <div style="font-size: 28px; margin-bottom: 16px;">👥</div>
+      <div style="font-size: 15px; font-weight: 700; margin-bottom: 8px;">Team & Kultur</div>
+      <div style="font-size: 13px; color: var(--gray); line-height: 1.5;">Gründer-Portraits, Meilensteine, persönliche Einblicke.</div>
+      <div style="font-size: 12px; color: var(--gold); margin-top: 12px; font-weight: 600;">10%</div>
+    </div>
+    <div style="padding: 32px 24px; background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--gold);">
+      <div style="font-size: 28px; margin-bottom: 16px;">📍</div>
+      <div style="font-size: 15px; font-weight: 700; margin-bottom: 8px;">Standort-Highlights</div>
+      <div style="font-size: 13px; color: var(--gray); line-height: 1.5;">NRW-Städte, Nachbarschafts-Spotlights.</div>
+      <div style="font-size: 12px; color: var(--gold); margin-top: 12px; font-weight: 600;">10%</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9: CASAFARI / IMMOAUTOMATION -->
+<section class="slide slide-dark" style="padding: 60px 80px;">
+  <div class="slide-num">09 / 11</div>
+  <div style="text-align: center; margin-bottom: 40px;">
+    <div class="eyebrow">Lead-Generierung</div>
+    <h2 class="display">
+      Live-<span class="gold">Immobilienbewertung</span><br>für eure Kunden.
+    </h2>
+    <div class="subtitle" style="text-align: center; margin-left: auto; margin-right: auto;">
+      Wir integrieren ein interaktives Bewertungstool direkt auf eurer Website — eure Besucher erhalten eine kostenlose Wertermittlung und werden dabei automatisch zum qualifizierten Lead.
+    </div>
+  </div>
+
+  <!-- Wizard mockup -->
+  <div style="max-width: 900px; margin: 0 auto; background: #fff; padding: 48px; color: var(--navy);">
+
+    <!-- Step indicator -->
+    <div style="display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 48px;">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+        <div style="width: 36px; height: 36px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-weight: 700;">✓</div>
+        <span style="font-size: 11px; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;">Objektart</span>
+      </div>
+      <div style="width: 80px; height: 3px; background: var(--gold); margin-bottom: 24px;"></div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+        <div style="width: 36px; height: 36px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-weight: 700;">✓</div>
+        <span style="font-size: 11px; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;">Objekttyp</span>
+      </div>
+      <div style="width: 80px; height: 3px; background: var(--gold); margin-bottom: 24px;"></div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+        <div style="width: 36px; height: 36px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-weight: 700;">3</div>
+        <span style="font-size: 11px; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;">Details</span>
+      </div>
+      <div style="width: 80px; height: 3px; background: #e5e5e5; margin-bottom: 24px;"></div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+        <div style="width: 36px; height: 36px; background: #e5e5e5; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #999; font-size: 14px; font-weight: 700;">4</div>
+        <span style="font-size: 11px; color: #999; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;">Adresse</span>
+      </div>
+    </div>
+
+    <!-- Slider fields -->
+    <div style="display: flex; flex-direction: column; gap: 32px; margin-bottom: 40px;">
+      <div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+          <span style="font-size: 15px; font-weight: 600; color: var(--navy);">Wohnfläche</span>
+          <span style="font-size: 15px; font-weight: 700; color: var(--gold);">90 m²</span>
+        </div>
+        <div style="height: 6px; background: #e5e5e5; position: relative;">
+          <div style="height: 6px; background: var(--gold); width: 45%;"></div>
+          <div style="width: 18px; height: 18px; background: var(--gold); border-radius: 50%; position: absolute; top: -6px; left: 45%;"></div>
+        </div>
+      </div>
+      <div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+          <span style="font-size: 15px; font-weight: 600; color: var(--navy);">Zimmer</span>
+          <span style="font-size: 15px; font-weight: 700; color: var(--gold);">2 – 5</span>
+        </div>
+        <div style="height: 6px; background: #e5e5e5; position: relative;">
+          <div style="height: 6px; background: var(--gold); width: 50%; margin-left: 15%;"></div>
+          <div style="width: 18px; height: 18px; background: var(--gold); border-radius: 50%; position: absolute; top: -6px; left: 15%;"></div>
+          <div style="width: 18px; height: 18px; background: var(--gold); border-radius: 50%; position: absolute; top: -6px; left: 65%;"></div>
+        </div>
+      </div>
+      <div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+          <span style="font-size: 15px; font-weight: 600; color: var(--navy);">Grundstücksfläche</span>
+          <span style="font-size: 15px; font-weight: 700; color: var(--gold);">400 m²</span>
+        </div>
+        <div style="height: 6px; background: #e5e5e5; position: relative;">
+          <div style="height: 6px; background: var(--gold); width: 20%;"></div>
+          <div style="width: 18px; height: 18px; background: var(--gold); border-radius: 50%; position: absolute; top: -6px; left: 20%;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div style="display: flex; gap: 16px; justify-content: center;">
+      <div style="padding: 14px 36px; border: 1px solid var(--border); color: var(--gray); font-size: 14px; font-weight: 600; text-align: center; cursor: pointer;">Vorheriger Schritt</div>
+      <div style="padding: 14px 36px; background: var(--gold); color: var(--navy); font-size: 14px; font-weight: 700; text-align: center; cursor: pointer;">Nächster Schritt</div>
+    </div>
+  </div>
+
+  <!-- Bottom info -->
+  <div style="display: flex; justify-content: center; gap: 48px; margin-top: 40px;">
+    <div style="text-align: center;">
+      <div style="font-size: 32px; margin-bottom: 8px;">🎯</div>
+      <div style="font-size: 13px; color: rgba(255,255,255,0.7); font-weight: 600;">Qualifizierte Leads</div>
+      <div style="font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 4px;">Name, E-Mail & Telefon<br>werden automatisch erfasst</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="font-size: 32px; margin-bottom: 8px;">⚡</div>
+      <div style="font-size: 13px; color: rgba(255,255,255,0.7); font-weight: 600;">Sofortige Bewertung</div>
+      <div style="font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 4px;">Powered by Casafari —<br>Europas Immobiliendaten</div>
+    </div>
+    <div style="text-align: center;">
+      <div style="font-size: 32px; margin-bottom: 8px;">🔗</div>
+      <div style="font-size: 13px; color: rgba(255,255,255,0.7); font-weight: 600;">Direkt eingebettet</div>
+      <div style="font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 4px;">Nahtlos auf eurer Website<br>von immoautomation</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10: PACKAGES -->
+<section class="slide slide-light">
+  <div class="slide-num">10 / 11</div>
+  <div style="text-align: center; margin-bottom: 16px;">
+    <div class="eyebrow">Investition</div>
+    <h2 class="display">
+      Wähle dein <span class="gold">Paket.</span>
+    </h2>
+    <div class="subtitle" style="text-align: center; margin-left: auto; margin-right: auto;">
+      Drei Optionen — von der Website bis zum Komplettpaket mit laufender Betreuung.
+    </div>
+  </div>
+
+  <div class="package-grid">
+    <div class="package-card">
+      <div class="package-name">Basis</div>
+      <div class="package-price display">Website</div>
+      <div class="gold-line" style="margin: 16px 0 24px;"></div>
+      <ul class="package-items">
+        <li>Komplette Website (8 Seiten)</li>
+        <li>Responsive Design</li>
+        <li>SEO-Grundoptimierung</li>
+        <li>Kontaktformular</li>
+        <li>WhatsApp-Integration</li>
+        <li>Vercel Hosting-Setup</li>
+      </ul>
+    </div>
+    <div class="package-card featured">
+      <div class="package-badge">Empfohlen</div>
+      <div class="package-name">Professional</div>
+      <div class="package-price display">Website + Social</div>
+      <div class="gold-line" style="margin: 16px 0 24px;"></div>
+      <ul class="package-items">
+        <li>Alles aus Basis</li>
+        <li>Instagram-Profil Einrichtung</li>
+        <li>10 Content-Templates</li>
+        <li>Social-Media-Strategie</li>
+        <li>2-Wochen Content-Plan</li>
+        <li>Hashtag-Strategie</li>
+      </ul>
+    </div>
+    <div class="package-card">
+      <div class="package-name">Enterprise</div>
+      <div class="package-price display">Komplett + Betreuung</div>
+      <div class="gold-line" style="margin: 16px 0 24px;"></div>
+      <ul class="package-items">
+        <li>Alles aus Professional</li>
+        <li>Monatliche Content-Erstellung</li>
+        <li>Community Management</li>
+        <li>Performance-Reporting</li>
+        <li>Laufende Website-Updates</li>
+        <li>Persönlicher Ansprechpartner</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10: CONTACT / CTA -->
+<section class="slide slide-dark" style="text-align: center; align-items: center;">
+  <div class="slide-num">11 / 11</div>
+  <div class="pitch-logo" style="margin-bottom: 40px;">
+    <img src="logo.png" alt="A&A Assets">
+  </div>
+  <h2 class="display" style="max-width: 800px;">
+    Bereit für den<br>nächsten <span class="gold">Schritt?</span>
+  </h2>
+  <div class="subtitle" style="text-align: center; margin-left: auto; margin-right: auto;">
+    Lass uns gemeinsam eure digitale Zukunft gestalten.<br>
+    Wir freuen uns auf das Gespräch.
+  </div>
+  <div class="gold-line" style="margin: 40px auto;"></div>
+
+  <div class="contact-grid" style="max-width: 800px; margin-left: auto; margin-right: auto;">
+    <div class="contact-item">
+      <div class="contact-item-label">Ansprechpartner</div>
+      <div class="contact-item-value">Alexander Gottlieb</div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-item-label">E-Mail</div>
+      <div class="contact-item-value" style="font-size: 16px;">alexander@makeautomation.at</div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-item-label">Website</div>
+      <div class="contact-item-value" style="font-size: 16px;">immoautomation.at</div>
+    </div>
+  </div>
+
+  <p style="margin-top: 60px; font-size: 12px; color: rgba(255,255,255,0.2); letter-spacing: 0.15em; text-transform: uppercase;">
+    Diese Präsentation wurde vollständig mit KI erstellt — ein Vorgeschmack auf unsere Arbeitsweise.
+  </p>
+</section>
+
+<script>
+  // Scale desktop iframe to fit container
+  function scaleIframe() {
+    const viewport = document.getElementById('websiteViewport');
+    if (!viewport) return;
+    const containerWidth = viewport.offsetWidth;
+    const scale = containerWidth / 1920;
+    viewport.style.setProperty('--iframe-scale', scale);
+    viewport.style.height = (1080 * scale) + 'px';
+  }
+
+  // Device toggle
+  function setDevice(mode) {
+    const desktop = document.getElementById('desktopFrame');
+    const mobile = document.getElementById('mobileFrame');
+    const btnD = document.getElementById('btnDesktop');
+    const btnM = document.getElementById('btnMobile');
+
+    if (mode === 'desktop') {
+      desktop.style.display = 'block';
+      mobile.style.display = 'none';
+      btnD.style.background = '#0a0f1a';
+      btnD.style.color = '#ffffff';
+      btnM.style.background = '#ffffff';
+      btnM.style.color = '#0a0f1a';
+    } else {
+      desktop.style.display = 'none';
+      mobile.style.display = 'flex';
+      btnM.style.background = '#0a0f1a';
+      btnM.style.color = '#ffffff';
+      btnD.style.background = '#ffffff';
+      btnD.style.color = '#0a0f1a';
+    }
+  }
+
+  window.addEventListener('load', scaleIframe);
+  window.addEventListener('resize', scaleIframe);
+  setTimeout(scaleIframe, 500);
+</script>
+
+</body>
+</html>

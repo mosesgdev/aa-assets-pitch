@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Montserrat:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .post {
+    width: 1080px;
+    height: 1350px;
+    background: #0a0f1a;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px;
+  }
+
+  .bg-image { position: absolute; inset: 0; }
+  .bg-image img { width: 100%; height: 100%; object-fit: cover; opacity: 0.12; }
+
+  .top-logo { position: absolute; top: 50px; left: 50%; transform: translateX(-50%); }
+  .top-logo img { width: 120px; height: 120px; object-fit: contain; }
+
+  .content { position: relative; z-index: 2; }
+  .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.35em; color: #d4a853; font-weight: 700; margin-bottom: 36px; }
+  .title { font-family: 'Instrument Serif', serif; font-size: 58px; color: #ffffff; line-height: 1.1; margin-bottom: 28px; }
+  .title em { font-style: normal; color: #d4a853; }
+  .subtitle { font-size: 17px; color: rgba(255,255,255,0.5); line-height: 1.6; max-width: 600px; margin: 0 auto 52px; }
+  .cta-button { display: inline-block; background: #d4a853; color: #0a0f1a; font-size: 14px; font-weight: 700; padding: 22px 56px; text-transform: uppercase; letter-spacing: 0.15em; }
+  .contact-info { margin-top: 44px; color: rgba(255,255,255,0.3); font-size: 13px; line-height: 2; letter-spacing: 0.05em; }
+</style>
+</head>
+<body>
+  <div class="post">
+    <div class="bg-image"><img src="https://aa-assets.de/wp-content/uploads/2024/12/20240830_143303-scaled.jpg" alt=""></div>
+    <div class="top-logo"><img src="logo.png" alt="A&A Assets"></div>
+    <div class="content">
+      <div class="eyebrow">Jetzt verkaufen</div>
+      <div class="title">Sie möchten Ihre<br>Immobilie <em>verkaufen?</em></div>
+      <div class="subtitle">Schnell, fair und ohne Maklergebühren.<br>Wir kaufen Ihre Immobilie — egal in welchem Zustand.</div>
+      <div class="cta-button">Kostenlose Bewertung →</div>
+      <div class="contact-info">+49 173 4179405<br>info@aa-assets.de</div>
+    </div>
+  </div>
+</body>
+</html>

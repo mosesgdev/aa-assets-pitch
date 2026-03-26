@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Montserrat:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .post {
+    width: 1080px;
+    height: 1350px;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px;
+  }
+
+  .corner { position: absolute; width: 80px; height: 80px; }
+  .corner-tl { top: 44px; left: 44px; border-top: 2px solid #0a0f1a; border-left: 2px solid #0a0f1a; }
+  .corner-tr { top: 44px; right: 44px; border-top: 2px solid #0a0f1a; border-right: 2px solid #0a0f1a; }
+  .corner-bl { bottom: 44px; left: 44px; border-bottom: 2px solid #0a0f1a; border-left: 2px solid #0a0f1a; }
+  .corner-br { bottom: 44px; right: 44px; border-bottom: 2px solid #0a0f1a; border-right: 2px solid #0a0f1a; }
+
+  .content { position: relative; z-index: 2; text-align: center; max-width: 800px; }
+  .stars { display: flex; justify-content: center; gap: 6px; margin-bottom: 44px; }
+  .star { width: 26px; height: 26px; color: #d4a853; }
+  .quote-mark { font-family: 'Instrument Serif', serif; font-size: 130px; color: #0a0f1a; opacity: 0.06; line-height: 0.6; margin-bottom: 10px; }
+  .quote { font-family: 'Instrument Serif', serif; font-size: 36px; color: #0a0f1a; font-style: italic; line-height: 1.35; margin-bottom: 44px; }
+  .divider { width: 60px; height: 2px; background: #d4a853; margin: 0 auto 24px; }
+  .author { font-size: 13px; font-weight: 700; color: #0a0f1a; text-transform: uppercase; letter-spacing: 0.2em; }
+  .author-detail { font-size: 12px; color: #6b7280; margin-top: 6px; letter-spacing: 0.1em; }
+
+  .bottom-logo { position: absolute; bottom: 54px; left: 50%; transform: translateX(-50%); }
+  .bottom-logo img { width: 120px; height: 120px; object-fit: contain; }
+</style>
+</head>
+<body>
+  <div class="post">
+    <div class="corner corner-tl"></div>
+    <div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div>
+    <div class="corner corner-br"></div>
+    <div class="content">
+      <div class="stars">
+        <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <div class="quote-mark">&ldquo;</div>
+      <div class="quote">Ich habe meine Immobilie schnell und unkompliziert an die A&A Assets verkauft. Vielen Dank!</div>
+      <div class="divider"></div>
+      <div class="author">Zufriedener Verkäufer</div>
+      <div class="author-detail">NRW, Deutschland</div>
+    </div>
+    <div class="bottom-logo"><img src="logo.png" alt="A&A Assets"></div>
+  </div>
+</body>
+</html>

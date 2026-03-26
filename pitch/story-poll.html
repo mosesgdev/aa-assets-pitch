@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Montserrat:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  .story {
+    width: 1080px; height: 1920px; background: #ffffff;
+    position: relative; overflow: hidden; font-family: 'Montserrat', sans-serif;
+    display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 80px;
+  }
+  .top-logo { position: absolute; top: 60px; left: 50%; transform: translateX(-50%); z-index: 5; display: flex; align-items: center; gap: 10px; }
+  .top-logo img { width: 100px; height: 100px; object-fit: contain; }
+  .logo-text { color: #0a0f1a; font-family: 'Instrument Serif', serif; font-size: 17px; }
+  .content { text-align: center; width: 100%; }
+  .question { font-family: 'Instrument Serif', serif; font-size: 48px; color: #0a0f1a; line-height: 1.2; margin-bottom: 60px; }
+  .question em { font-style: normal; color: #d4a853; }
+  .poll { display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 700px; margin: 0 auto; }
+  .poll-option { background: #f7f7f6; border: 1px solid #e5e5e5; padding: 28px 36px; font-size: 19px; font-weight: 600; color: #0a0f1a; text-align: center; cursor: pointer; transition: all 0.2s; }
+  .poll-option:hover { background: #0a0f1a; border-color: #0a0f1a; color: #ffffff; }
+  .hint { margin-top: 40px; color: #6b7280; font-size: 14px; letter-spacing: 0.05em; }
+  .bottom-cta { position: absolute; bottom: 100px; left: 0; right: 0; text-align: center; }
+  .swipe-text { color: #d4a853; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; }
+</style>
+</head>
+<body>
+  <div class="story">
+    <div class="top-logo">
+      <img src="logo.png" alt="A&A Assets">
+    </div>
+    <div class="content">
+      <div class="question">Was ist euch bei einer Immobilie am <em>wichtigsten?</em></div>
+      <div class="poll">
+        <div class="poll-option">Lage & Nachbarschaft</div>
+        <div class="poll-option">Größe & Raumaufteilung</div>
+        <div class="poll-option">Zustand & Modernisierung</div>
+        <div class="poll-option">Preis & Investitionspotenzial</div>
+      </div>
+      <div class="hint">Tippt auf eure Antwort!</div>
+    </div>
+    <div class="bottom-cta"><div class="swipe-text">↑ Mehr erfahren</div></div>
+  </div>
+</body>
+</html>
